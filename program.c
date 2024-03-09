@@ -1,12 +1,14 @@
 #include <stdio.h>
 int main(){
-	
 	int row_1,column_1,row_2,column_2;	//Dimentions
 	int temp=0; //Temporary Value For The Sum
 	int i,j,k;  //Counters
+	int choice; //Choice
 	
 	printf("\t\tWelcome To My Humble Matrices Multiplier\n\n");
 	
+	do{
+		
 	printf("Enter number of Rows and Columns of Matrix A respectively: ");
 	scanf("%d%d", &row_1,&column_1);
 	
@@ -22,15 +24,15 @@ int main(){
 	
 	printf("\n===========================================================\n");
 	
-	for(i=0;i<row_1;i++){	//Values of Matrix A
+	for(i=0;i<row_1;++i){	//Values of Matrix A
 		printf("\nEnter values of Matrix A in row %d: " ,i+1);
-		for(j=0;j<column_1;j++)
+		for(j=0;j<column_1;++j)
 			scanf("%d" ,&a1[i][j]);
 	}
 	
 	printf("\n===========================================================\n");
 	
-		for(i=0;i<row_2;i++){	//Values of Matrix B
+		for(i=0;i<row_2;++i){	//Values of Matrix B
 			printf("\nEnter values of Matrix B in row %d: " ,i+1);
 			for(j=0;j<column_2;j++)
 				scanf("%d" ,&a2[i][j]);
@@ -38,9 +40,9 @@ int main(){
 	
 	printf("\n===========================================================\n");
 	
-	for(i=0;i<row_1;i++){	//Calculating The Product
-		for(j=0;j<column_2;j++){
-			for(k=0;k<column_1;k++){
+	for(i=0;i<row_1;++i){	//Calculating The Product
+		for(j=0;j<column_2;++j){
+			for(k=0;k<column_1;++k){
 			temp += a1[i][k] * a2[k][j];
 			}
 			a3[i][j] = temp;
@@ -49,37 +51,40 @@ int main(){
 	}
 	printf("\nMatrix A:\n");
 	
-	for(i=0;i<row_1;i++){	//Printing Matrix A
+	for(i=0;i<row_1;++i){	//Printing Matrix A
 		printf("\n");
-		for(j=0;j<column_1;j++)
+		for(j=0;j<column_1;++j)
 			printf("%d\t" ,a1[i][j]);
 	}
 	
 	printf("\n\nMatrix B:\n");
 	
-	for(i=0;i<row_2;i++){	//Printing Matrix B
+	for(i=0;i<row_2;++i){	//Printing Matrix B
 		printf("\n");
-		for(j=0;j<column_2;j++)
+		for(j=0;j<column_2;++j)
 			printf("%d\t" ,a2[i][j]);
 	}
 	
 		printf("\n\nMatrix C:\n");
 	
-	for(i=0;i<row_1;i++){	//Printing Matrix C
+	for(i=0;i<row_1;++i){	//Printing Matrix C
 		printf("\n");
-		for(j=0;j<column_1;j++)
+		for(j=0;j<column_1;++j)
 			printf("%d\t" ,a3[i][j]);
 	}
 				
 	printf("\n\nEnter 1 To Calulate Other Matrices Or Enter Any Other Number To End The Progam: ");
 	
-	int choice;
 	scanf("%d" ,&choice);
 	
 	switch(choice){
-		case 1: printf("\nSure Thing!\n\n"); return main(); break;
+		case 1: {
+		printf("===========================================================\n\n");
+		printf("\nWelcome Again!\n\n"); break;}
 		default: printf("\nTill The Next Time. Bye :)"); break;
 		}
+}
+	while(choice==1);
 
 	return 0;
 }
